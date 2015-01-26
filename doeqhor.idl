@@ -1,0 +1,6 @@
+; use with http://idlastro.gsfc.nasa.gov/ftp/pro/astro/eq2hor.pro
+dataradec = READ_ASCII('radec_fk5.dat', DATA_START=0)
+ra = transpose(dataradec.FIELD1[0,*])                  
+dec = transpose(dataradec.FIELD1[1,*]) 
+eq2hor, ra, dec, 2455197.5, alt, az, lat=48, lon=-95, refract_=0
+writecol, 'altaz_eq2hor.dat', alt, az

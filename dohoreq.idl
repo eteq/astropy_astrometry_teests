@@ -1,0 +1,7 @@
+; use with http://idlastro.gsfc.nasa.gov/ftp/pro/astro/hor2eq.pro
+dataradec = READ_ASCII('altaz_astropy.dat', DATA_START=0)
+alt = transpose(dataradec.FIELD1[0,*])                  
+az = transpose(dataradec.FIELD1[1,*]) 
+hor2eq, alt, az, 2455197.5, ra, dec, lat=48, lon=-95, refract_=0
+writecol, 'radec_hor2eq.dat', ra, dec
+
